@@ -1,0 +1,16 @@
+/backend/target/
+**/node_modules/
+**/target/
+**/dist/
+*.env
+*.env.*
+!**/.env.example
+*.log
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.suo
+*.user
+*.swp
+*.swo

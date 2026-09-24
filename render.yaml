@@ -1,0 +1,35 @@
+# Render blueprint for the QA Testing application.
+# Connect this repository in Render, then enter every sync:false value manually.
+# Render does not provision the MySQL database used by this application.
+services:
+  - type: web
+    name: qa-testing-backend
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    envVars:
+      - key: SERVER_PORT
+        value: "10000"
+      - key: JWT_EXPIRATION_MS
+        value: "900000"
+      - key: JWT_SECRET
+        sync: false
+      - key: SPRING_DATASOURCE_URL
+        sync: false
+      - key: SPRING_DATASOURCE_USERNAME
+        sync: false
+      - key: SPRING_DATASOURCE_PASSWORD
+        sync: false
+      - key: APP_CORS_ALLOWED_ORIGINS
+        sync: false
+
+  - type: static
+    name: qa-testing-frontend
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        sync: false
