@@ -24,7 +24,7 @@ public class Bug {
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false, length = 5000)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
     @Column(nullable = false)
@@ -33,13 +33,13 @@ public class Bug {
     @Column(nullable = false)
     private String environment;
 
-    @Column(nullable = false, length = 5000)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String stepsToReproduce;
 
-    @Column(nullable = false, length = 5000)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String expectedResult;
 
-    @Column(nullable = false, length = 5000)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String actualResult;
 
     @Enumerated(EnumType.STRING)

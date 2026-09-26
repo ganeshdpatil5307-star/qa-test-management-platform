@@ -47,8 +47,14 @@ public class JwtService {
             parseClaims(token);
             return true;
         } catch (RuntimeException exception) {
-            return false;
-        }
+            System.out.println(
+                "JWT validation failed: "
+                        + exception.getClass().getSimpleName()
+                        + " - "
+                        + exception.getMessage()
+        );
+        return false;
+     }
     }
 
     private Claims parseClaims(String token) {
